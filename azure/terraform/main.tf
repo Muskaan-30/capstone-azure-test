@@ -54,6 +54,10 @@ resource "azurerm_subnet" "application_subnet" {
   resource_group_name  = azurerm_resource_group.rg.name
   virtual_network_name = azurerm_virtual_network.vnet.name
   address_prefixes     = ["10.0.1.0/24"]
+}
+# --- Link the NSG to the Application Subnet ---
+resource "azurerm_subnet_network_security_group_association" "app_nsg_assoc" {
+  subnet_id                 = azurerm_subnet.application_subnet.id
   network_security_group_id = azurerm_network_security_group.app_nsg.id
 }
 resource "azurerm_subnet" "db_subnet" {
