@@ -90,7 +90,7 @@ resource "azurerm_kubernetes_cluster" "aks" {
   }
   identity {
     type         = "UserAssigned"
-    user_assigned_identity_ids = [azurerm_user_assigned_identity.aks_identity.id]
+    identity_ids = [azurerm_user_assigned_identity.aks_identity.id]
   }
   azure_active_directory_role_based_access_control {
     managed = true
