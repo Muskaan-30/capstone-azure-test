@@ -6,7 +6,9 @@ terraform {
     random  = { source = "hashicorp/random", version = "~>3.1" }
   }
 }
-provider "azurerm" { features {} }
+provider "azurerm" {
+  features {}
+}
 data "azurerm_client_config" "current" {}
 resource "random_string" "unique" { length = 5, special = false, upper = false }
 
