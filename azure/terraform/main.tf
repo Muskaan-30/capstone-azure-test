@@ -10,7 +10,11 @@ provider "azurerm" {
   features {}
 }
 data "azurerm_client_config" "current" {}
-resource "random_string" "unique" { length = 5, special = false, upper = false }
+resource "random_string" "unique" {
+  length  = 5
+  special = false
+  upper   = false
+}
 
 locals {
   location      = "eastus"
@@ -124,7 +128,10 @@ resource "azurerm_cosmosdb_account" "cosmosdb" {
   offer_type          = "Standard"
   kind                = "GlobalDocumentDB"
   consistency_policy { consistency_level = "Session" }
-  geo_location { location = azurerm_resource_group.rg.location, failover_priority = 0 }
+  geo_location {
+  location          = azurerm_resource_group.rg.location
+  failover_priority = 0
+}
 }
 resource "azurerm_storage_account" "storage" {
   name                = local.storage_name
