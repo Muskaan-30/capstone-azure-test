@@ -93,7 +93,6 @@ resource "azurerm_kubernetes_cluster" "aks" {
     identity_ids = [azurerm_user_assigned_identity.aks_identity.id]
   }
   azure_active_directory_role_based_access_control {
-    managed = true
     admin_group_object_ids = [var.aks_admin_group_object_id]
   }
 }
